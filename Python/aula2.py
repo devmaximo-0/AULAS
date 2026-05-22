@@ -28,14 +28,17 @@ dicionarios = [dici8, dici4, dici2]
 encontrado = False
 for dicio in dicionarios:
     if pergunta2 in dicio['lugar']:
-        print(f'certinho! Número {pergunta2} encontrado na linha {dicio["nome"]}')
+        print(f'certinho! Número {pergunta2} encontrado.')
         encontrado = True
         break
 
 if not encontrado:
     print('essa linha não existe na fabrica!')
 
-pergunta3 = int(input(f'digite a quantidade de operários especializados que precisa para trabalhar na {pergunta2} na estação {pergunta1}: '))
-if pergunta3 > dici2['quantidade'] or dici4['quantidade'] or dici8['quantidade']:
+if pergunta2 == dici8:
+    pergunta4 = input(f'De quantos operarios vai precisar ? na linha BE{pergunta2} nós temos {dici8["quantidade"]}')
+
+
+pergunta4 = int(input(f'digite a quantidade de operários especializados que precisa para trabalhar na {pergunta2} na estação {pergunta1} na {pergunta2} : '))
+if pergunta4 > dici2['quantidade'] or dici4['quantidade'] or dici8['quantidade']:
     print('não temos esse número aqui.')
- corretamente!')
