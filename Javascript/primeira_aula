@@ -1,1 +1,100 @@
-print('hello word');
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <a href="https://mqs.motorola.com/home/home.aspx?enc=Q5gvSdpkrSm4+XI8x/jp2w1wsPbDh0YekbsarrLd0Blcn34hpzKeSNIV4QWOaulvUIlOTwhQ4APoz8Zz4qCb+JXImScVswB7YzdY46WhVHwcsWP2uu4lBUvL6firmhxm" target="_blank">Link para o MQS</a>
+
+    <link rel="icon" type="image/png" href="menu.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Checagem FTY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4e21e2; /* Azul claro */
+            color: #0d47a1; /* Azul escuro */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #0d47a1;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0d47a1;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #0d47a1;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0d47a1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor:pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 4px;
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Checagem FTY</h1>
+        <p>FTY significa First Time Yield, que é a porcentagem de produtos que passam na primeira verificação de qualidade.</p>
+        <link rel="stylesheet" href="">
+        
+        <label for="total">Número de do Prime Handle da estação que mais testou:</label>
+        <input type="number" id="total" placeholder="Ex: 100">
+        
+        <label for="aprovados">Número total de Prime Fail:</label>
+        <input type="number" id="aprovados" placeholder="Ex: 50">
+        
+        <button onclick="calcularfty()">Calcular FTY</button>
+        
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularfty() {
+            // Pegar os valores dos inputs
+            var total = document.getElementById('total').value;
+            var aprovados = document.getElementById('aprovados').value;
+            
+            // Verificar se os valores são válidos
+            if (total === '' || aprovados === '' || total <= 0 || total < 0 || total > aprovados) {
+                document.getElementById('resultado').innerHTML = 'Por favor, insira valores válidos. O número de Prime Fail não pode ser maior que o número de Prime Handle da estação que mais testou.';
+                return;
+            }
+            
+            // Calcular FTY
+            var fty = (1- (aprovados / total)) * 100;
+            
+            // Exibir o resultado
+            document.getElementById('resultado').innerHTML = 'FTY: ' + fty.toFixed(2) + '%';
+        }
+    </script>
+</body>
+</html>
